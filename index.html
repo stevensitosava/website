@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steven Savarin | Software Developer</title>
+    <meta name="description" content="Professional portfolio of Steven Savarin, a Full-Stack software developer creating innovative solutions.">
+    <meta name="author" content="Steven Savarin">
+
+    <link rel="icon" href="assets/freelancer.png">
+
+    <meta property="og:title" content="Professional portfolio of Steven Savarin">
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/me.webp">
+    <meta property="og:url" content="https://www.stevensawarin.com/">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+    <div class="parallax-elements">
+        <img src="assets/shape1.png" alt="" class="parallax-element" id="p-element-1">
+        <!-- <img src="assets/shape2.png" alt="" class="parallax-element" id="p-element-2"> -->
+    </div>
+
+    <header class="header">
+        <nav class="nav container">
+            <a href="#inicio" class="nav-logo">Steven.</a>
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="#proyectos" class="nav-link">Projects</a></li>
+                    <li><a href="#skills" class="nav-link">Tools</a></li>
+                    <li><a href="#about" class="nav-link">About Me</a></li>
+                    <li><a href="#contacto" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+            <div class="nav-buttons">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.95-4.243-1.591 1.591M3 12h2.25m.386-6.364 1.591 1.591M12 6.75a5.25 5.25 0 1 0 0 10.5 5.25 5.25 0 0 0 0-10.5Z" /></svg>
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" /></svg>                      
+                </button>
+                <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir menú">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section" id="inicio">
+            <div class="hero-background-blob"></div>
+            
+            <div class="container hero-content">
+                <h1 class="hero-title animated-line">Steven Savarin</h1>
+                <p class="hero-profession animated-line">Software Developer</p>
+                
+                <p class="hero-subtitle">If you can imagine it, you can program it.</p>
+                
+                <div class="hero-buttons">
+                    <a href="#proyectos" class="btn btn-primary">My Projects</a>
+                    <a href="https://github.com/Stevensavarin" target="_blank" class="btn btn-secondary">GitHub</a>
+                    <a href="https://www.vespersp.com/" class="btn btn-primary">My Store</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section" id="proyectos">
+            <div class="container">
+                <h2 class="section-title">Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card"><img src="assets/yoom.webp" alt="Proyecto 1"><div class="project-info"><h3>Video Conferencing App</h3><p>A web-based application for secure, real-time video conferencing, with integrated chat and screen-sharing capabilities</p><div class="project-tags"><span>Next.Js</span><span>Stream</span><span>Tailwind</span></div><div class="project-links"><a href="https://video-conferencing-app-opal.vercel.app/" target="_blank">Demo</a><a href="https://github.com/Stevensavarin/video-conferencing-app" target="_blank">Code</a></div></div></div>
+                    <div class="project-card"><img src="assets/figma.webp" alt="Proyecto 2"><div class="project-info"><h3>Figma Design</h3><p>UI/UX concept and prototype for a social VR platform. The main challenge was to design a navigation system and spatial menus that were intuitive and accessible without breaking user immersion. The whole flow was designed and visualised in Figma.</p><div class="project-tags"><span>Figma</span><span>UX/UI</span><span>Design</span></div><div class="project-links"><a href="https://www.figma.com/proto/4B3y5JNgSMZkadFoIB1uTp/Scrolling?node-id=5-1438&node-type=frame&t=p2CetI1zHpKlsGtG-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1" target="_blank">Demo</a></div></div></div>
+                    <div class="project-card"><img src="assets/fix.webp" alt="Proyecto 3"><div class="project-info"><h3>AI Photo Editor</h3><p>Functional web-based photo editing tool that integrates an Artificial Intelligence API to offer intelligent filters and enhancements.</p><div class="project-tags"><span>Next.js</span><span>Stripe</span><span>TypeScript</span></div><div class="project-links"><a href="https://fixyaipic.vercel.app/" target="_blank">Demo</a><a href="https://github.com/Stevensavarin/SaaS_platform" target="_blank">Code</a></div></div></div>
+                    <div class="project-card"><img src="assets/webscraping.webp" alt="Proyecto 4"><div class="project-info"><h3>Web Scraping Project</h3><p>This project is designed to perform web scraping of products on the Amazon website using Python. It utilizes libraries like BeautifulSoup and Requests to extract valuable product information such as title, price, rating, review count, and availability.</p><div class="project-tags"><span>Python</span><span>Pandas</span><span>Numpy</span></div><div class="project-links"><a href="https://github.com/Stevensavarin/Web-scraping-python-Amazon-" target="_blank">Code</a></div></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="skills">
+            <div class="container">
+                <h2 class="section-title">Skills and Technologies</h2>
+                <div class="skills-grid">
+                    <div class="skill-item"><i class="devicon-html5-plain"></i><span>HTML5</span></div>
+                    <div class="skill-item"><i class="devicon-css3-plain"></i><span>CSS3</span></div>
+                    <div class="skill-item"><i class="devicon-javascript-plain"></i><span>JavaScript</span></div>
+                    <div class="skill-item"><i class="devicon-typescript-plain"></i><span>TypeScript</span></div>
+                    <div class="skill-item"><i class="devicon-react-original"></i><span>React</span></div>
+                    <div class="skill-item"><i class="devicon-figma-plain"></i><span>Figma (UX/UI)</span></div>
+                    
+                    <div class="skill-item"><i class="devicon-python-plain"></i><span>Python</span></div>
+                    <div class="skill-item"><i class="devicon-django-plain"></i><span>Django</span></div>
+                    <div class="skill-item"><i class="devicon-flask-original"></i><span>Flask</span></div>
+                    <div class="skill-item"><i class="devicon-nodejs-plain"></i><span>Node.js</span></div>
+                    
+                    <div class="skill-item"><i class="devicon-mysql-plain"></i><span>MySQL</span></div>
+                    <div class="skill-item"><i class="devicon-postgresql-plain"></i><span>PostgreSQL</span></div>
+                    
+                    <div class="skill-item"><i class="devicon-docker-plain"></i><span>Docker</span></div>
+                    <div class="skill-item"><i class="devicon-git-plain"></i><span>Git</span></div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="about">
+            <div class="container about-container">
+                <img src="assets/me.webp" alt="Foto de Tu Nombre" class="about-photo">
+                <div class="about-text">
+                    <h2 class="section-title">About Me</h2>
+                    <p>I have experience working on both the backend and frontend, mainly using Python. 
+                        I have knowledge of databases, JavaScript, frameworks, and both the consumption and creation of APIs. 
+                        I've also worked with complementary tools and libraries such as Node.js, Express, Flask, Bootstrap, and Tailwind.
+                        <br>
+                        <br>
+                        I’m a native Spanish speaker, fluent in English and Papiamentu. When I'm unfamiliar with a technology, 
+                        I quickly find the best way to learn it. I'm passionate about learning and applying what 
+                        I know to projects I enjoy, especially in development.
+                        <br>
+                        <br>
+                        I enjoy writing clean code, collaborating in teams, and providing effective solutions
+                    </p>
+                </div>
+                <a href="https://www.vespersp.com/" class="btn btn-primary">My Store</a>
+
+            </div>
+        </section>
+
+        <section class="section" id="contacto">
+            <div class="container">
+                <h2 class="section-title">Interested? Let's talk.</h2>
+                <!-- <p>Send me a message.</p> -->
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <label for="nombre">Name</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tema">Topic</label>
+                        <input type="text" id="tema" name="tema" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje">Message</label>
+                        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+
+                <div id="mensaje-confirmacion" class="form-confirmation">
+                    Thank you! Your message has been sent successfully.
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-social-links">
+            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <img src="assets/github.png" alt="GitHub" class="social-icon icon-light-theme">
+                <img src="assets/githubw.png" alt="GitHub" class="social-icon icon-dark-theme">
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <img src="assets/linkedin.png" alt="LinkedIn" class="social-icon icon-light-theme">
+                <img src="assets/linkedinw.png" alt="LinkedIn" class="social-icon icon-dark-theme">
+            </a>
+            <a href="mailto:srssdesing@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Gmail">
+                <img src="assets/email.png" alt="Gmail" class="social-icon icon-light-theme">
+                <img src="assets/emailw.png" alt="Gmail" class="social-icon icon-dark-theme">
+            </a>
+        </div>
+        <p>&copy; <span id="current-year"></span> Steven Savarin. Designed and built by me.</p>
+    </div>
+</footer>
+</body>
+    <script src="js/hamburger.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/copyright.js" defer></script>
+    <script src="js/contact.js" defer></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Ld5F2grAAAAAEMqnNIE_0KrSKA7A88htuDnBcei"></script>
+</html>
