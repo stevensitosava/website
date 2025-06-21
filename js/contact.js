@@ -9,10 +9,10 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("submit", function (event) {
         event.preventDefault();
 
-        const nombre = document.getElementById("nombre").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const tema = document.getElementById("tema").value.trim();
-        const mensaje = document.getElementById("mensaje").value.trim();
+        const nombre = document.getElementById("nombre")?.value.trim();
+        const email = document.getElementById("email")?.value.trim();
+        const tema = document.getElementById("tema")?.value.trim();
+        const mensaje = document.getElementById("mensaje")?.value.trim();
 
         if (!nombre || !email || !tema || !mensaje) {
             alert("Please complete all fields.");
@@ -40,8 +40,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     },
                     body: JSON.stringify(data)
                 })
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) throw new Error(`HTTP error ${response.status}`);
+                    return response.json();
+                })
                 .then(result => {
+                    console.log("Respuesta del servidor:", result); // 👈 Agrega esta línea
                     if (result.success) {
                         document.getElementById("mensaje-confirmacion").style.display = "block";
                         form.reset();
