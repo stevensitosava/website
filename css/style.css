@@ -120,6 +120,9 @@ body {
 .nav-link { text-decoration: none; color: var(--color-text-secondary); font-weight: 500; transition: color 0.3s ease; }
 .nav-link:hover { color: var(--color-primary); }
 .nav-buttons { display: flex; align-items: center; gap: 1rem; }
+.nav-link.active {
+    color: var(--color-primary);
+}
 
 /* 3.3. Menú Hamburguesa y Tema */
 .theme-toggle { background: none; border: none; cursor: pointer; color: var(--color-text-secondary); width: 24px; height: 24px; padding: 0; }
@@ -135,7 +138,7 @@ body {
 
 /* 3.4. Secciones Principales */
 .section { padding: 8rem 0; transition: opacity 0.5s ease-out, transform 0.5s ease-out; background-color: var(--color-background); }
-#proyectos, #about { background-color: var(--color-surface); }
+#proyectos, #about { background-color: #0f172a00; }
 
 /* 3.5. Sección Hero (#inicio) y Animaciones */
 #inicio { min-height: 100vh; display: flex; align-items: center; text-align: center; position: relative; overflow: hidden; }

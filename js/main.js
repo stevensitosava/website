@@ -20,17 +20,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-    
-    // Elementos a animar letra por letra
+
+    // --- Enlaces del navbar para destacar el activo ---
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    // --- Elementos a animar letra por letra ---
     const animatedLines = document.querySelectorAll('.animated-line');
 
-    // Comprobación inicial para evitar errores
     if (!header || !themeToggle || !blob) {
         console.error("Faltan elementos críticos para la animación o el tema en el HTML.");
-        return; // Detiene la ejecución si falta algo crítico
+        return;
     }
 
-    // --- LÓGICA DEL BLOB INTERACTIVO ---
+    // --- BLOB INTERACTIVO ---
     heroSection.addEventListener('pointermove', (e) => {
         const { clientX, clientY } = e;
         window.requestAnimationFrame(() => {
@@ -39,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- LÓGICA DE MODO OSCURO/CLARO ---
+    // --- MODO OSCURO/CLARO ---
     const applyTheme = (theme) => {
         document.body.classList.toggle('dark-mode', theme === 'dark');
     };
@@ -51,12 +53,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme') || 'dark';
     applyTheme(savedTheme);
 
-
-    // --- LÓGICA PARA ANIMACIÓN DE TÍTULO EN MÚLTIPLES LÍNEAS ---
+    // --- ANIMACIÓN DE TÍTULO LETRA POR LETRA ---
     animatedLines.forEach((line, lineIndex) => {
         const text = line.textContent;
         line.textContent = '';
-        
+
         let accumulatedDelay = 0;
         if (lineIndex > 0) {
             const previousLine = animatedLines[lineIndex - 1];
@@ -66,15 +67,38 @@ document.addEventListener('DOMContentLoaded', () => {
         text.split('').forEach((char, charIndex) => {
             const span = document.createElement('span');
             span.textContent = char === ' ' ? '\u00A0' : char;
-            
+
             const delay = accumulatedDelay + (charIndex * 0.05);
             span.style.animationDelay = `${delay}s`;
             line.appendChild(span);
         });
     });
 
+    // --- DESTACAR NAV LINK ACTIVO ---
+    const setActiveNavLink = () => {
+        let currentSectionId = '';
+        const scrollY = window.scrollY;
 
-    // --- LÓGICA DE SCROLL (ANIMACIÓN DE SECCIONES + CABECERA) ---
+        sections.forEach(section => {
+            const offsetTop = section.offsetTop - 100;
+            const offsetHeight = section.offsetHeight;
+            if (scrollY >= offsetTop && scrollY < offsetTop + offsetHeight) {
+                currentSectionId = section.id;
+            }
+        });
+
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            const targetId = href && href.startsWith('#') ? href.substring(1) : null;
+            if (targetId === currentSectionId) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    };
+
+    // --- ANIMACIÓN DE SCROLL ---
     const animateOnScroll = () => {
         const scrollY = window.scrollY;
         header.classList.toggle('scrolled', scrollY > 50);
@@ -87,18 +111,20 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             const sectionCenterY = sectionRect.top + sectionRect.height / 2;
             const distanceFromCenter = Math.abs(viewportHeight / 2 - sectionCenterY);
-            const showThreshold = viewportHeight * 1.2;
+            const showThreshold = viewportHeight * 2;
             let opacity = Math.max(0, 1 - (distanceFromCenter / showThreshold));
             section.style.opacity = opacity;
         });
-        
+
         parallaxElements.forEach(el => {
             if (el.id === 'p-element-1') el.style.transform = `translateY(${scrollY * -0.1}px)`;
             if (el.id === 'p-element-2') el.style.transform = `translateY(${scrollY * 0.05}px)`;
         });
+
+        setActiveNavLink(); // 👉 Llamar aquí para actualizar nav activo
     };
 
-    // --- OPTIMIZACIÓN DEL RENDIMIENTO DEL SCROLL ---
+    // --- SCROLL OPTIMIZADO ---
     let ticking = false;
     document.addEventListener('scroll', () => {
         if (!ticking) {
@@ -112,4 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     animateOnScroll();
 });
+
+
 
