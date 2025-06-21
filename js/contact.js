@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("contact-form");
 
     if (!form) {
-        console.error("No se encontró el formulario con id='contact-form'");
+        console.error("Form with id='contact-form' not found");
         return;
     }
 
@@ -15,12 +15,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const mensaje = document.getElementById("mensaje").value.trim();
 
         if (!nombre || !email || !tema || !mensaje) {
-            alert("Por favor, completa todos los campos.");
+            alert("Please complete all fields.");
             return;
         }
 
         const submitButton = form.querySelector("button[type='submit']");
-        submitButton.textContent = "Enviando...";
+        submitButton.textContent = "Sending...";
         submitButton.disabled = true;
 
         grecaptcha.ready(function () {
@@ -49,15 +49,15 @@ document.addEventListener("DOMContentLoaded", function () {
                             document.getElementById("mensaje-confirmacion").style.display = "none";
                         }, 5000);
                     } else {
-                        alert("Error: " + (result.error || "No se pudo validar el envío."));
+                        alert("Error: " + (result.error || "The message could not be validated."));
                     }
                 })
                 .catch(error => {
                     console.error("Error en fetch:", error);
-                    alert("No se pudo conectar con el servidor.");
+                    alert("Could not connect to the server.");
                 })
                 .finally(() => {
-                    submitButton.textContent = "Enviar Mensaje";
+                    submitButton.textContent = "Send Message";
                     submitButton.disabled = false;
                 });
             });

@@ -6,6 +6,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('theme-toggle');
     const heroSection = document.getElementById('inicio');
     const blob = document.querySelector('.hero-background-blob');
+
+    const homeLinks = document.querySelectorAll('a[href="#inicio"]');
+    homeLinks.forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            if (history.pushState) {
+                history.pushState(null, null, window.location.pathname + window.location.search);
+            }
+        });
+    });
     
     // Elementos a animar letra por letra
     const animatedLines = document.querySelectorAll('.animated-line');
@@ -73,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             const sectionCenterY = sectionRect.top + sectionRect.height / 2;
             const distanceFromCenter = Math.abs(viewportHeight / 2 - sectionCenterY);
-            const showThreshold = viewportHeight * 0.8;
+            const showThreshold = viewportHeight * 1.2;
             let opacity = Math.max(0, 1 - (distanceFromCenter / showThreshold));
             section.style.opacity = opacity;
         });
