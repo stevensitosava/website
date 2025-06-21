@@ -1,64 +1,45 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("contact-form");
-    if (!form) return;
 
     form.addEventListener("submit", function (event) {
         event.preventDefault();
         
-        grecaptcha.ready(function() {
-            // Reemplaza con tu CLAVE DE SITIO de reCAPTCHA (la pública)
-            grecaptcha.execute('6Ld5F2grAAAAAEMqnNIE_0KrSKA7A88htuDnBcei', {action: 'submit'}).then(function(token) {
-                
-                const formData = {
-                    nombre: document.getElementById("nombre").value,
-                    email: document.getElementById("email").value,
-                    tema: document.getElementById("tema").value,
-                    mensaje: document.getElementById("mensaje").value,
-                    recaptchaToken: token
-                };
+        const nombre = document.getElementById("nombre").value;
+        const email = document.getElementById("email").value;
+        const tema = document.getElementById("tema").value;
+        const mensaje = document.getElementById("mensaje").value;
 
-                if (formData.nombre && formData.email && formData.tema && formData.mensaje) {
-                    
-                    // --- ¡PEGA AQUÍ LA NUEVA URL QUE COPIASTE EN EL PASO 2! ---
-                    const url = "https://script.google.com/macros/s/AKfycbziWyF_z8yPY25KWhX8Du3Y8014cZuYqEcKVVpUuxEO2JS129Oc3z_UtrpNdsCs5bc/exec"; 
+        // Validar que los campos requeridos no estén vacíos
+        if (nombre && email && tema && mensaje) {
+            const correoDestino = "srssdesing@gmail.com";
+            const asunto = `Nuevo mensaje de ${nombre}`;
+            const cuerpo = `Nombre: ${nombre}\nEmail: ${email}\nTema: ${tema}\nMensaje: ${mensaje}`;
 
-                    const submitButton = form.querySelector("button[type='submit']");
-                    submitButton.textContent = "Sending...";
-                    submitButton.disabled = true;
+            const url = `https://script.google.com/macros/s/AKfycbwY7Wte1jiWPJ3EnMw4tOnEep3CMljOcMPz9DX4gWYwC6Kc8pKXU_yPa0eTunMF-2Ob/exec?to=${correoDestino}&subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`;
 
-                    fetch(url, {
-                        method: "POST",
-                        redirect: "follow",
-                        muteHttpExceptions: true,
-                        headers: { "Content-Type": "text/plain;charset=utf-8" },
-                        body: JSON.stringify(formData), 
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success === true) {
-                            const mensajeConfirmacion = document.getElementById("mensaje-confirmacion");
-                            mensajeConfirmacion.style.display = "block";
-                            form.reset();
-                            setTimeout(() => {
-                                mensajeConfirmacion.style.display = "none";
-                            }, 5000);
-                        } else {
-                            alert("There was an error sending the message: " + (data.error || "Unknown error"));
-                        }
-                    })
-                    .catch(error => {
-                        console.error("Fetch Error:", error);
-                        alert("Could not connect to the sending server.");
-                    })
-                    .finally(() => {
-                        submitButton.textContent = "Send Message";
-                        submitButton.disabled = false;
-                    });
-                } else {
-                    alert("Please complete all required fields.");
-                }
-            });
-        });
+            fetch(url, { method: "GET" })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.result === "success") {
+                        const mensajeConfirmacion = document.getElementById("mensaje-confirmacion");
+                        mensajeConfirmacion.style.display = "block";
+                        form.reset();
+                        setTimeout(function () {
+                            mensajeConfirmacion.style.display = "none";
+                        }, 5000);
+                    } else {
+                        alert("There was an error sending the message. Please try again later.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("There was an error sending the message. Please try again.");
+                });
+        } else {
+            alert("Please complete all required fields.");
+        }
     });
 });
 
+// This email will not receive spam messages :P 
+// If you see this message, hire me, I'm good :)
